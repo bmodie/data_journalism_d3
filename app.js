@@ -143,7 +143,7 @@ d3.csv("corrData.csv", function(err, corrData) {
 							return yLinearScale(+data[currentAxisLabelY]);
 						})
 						.attr("r", "18")
-						.attr("fill", "skyblue")
+						.attr("fill", "lightgreen")
 						.attr("opacity", 0.5)
 							
 							// on mouseover
