@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>D3Times</title>
-	<link rel="stylesheet" href="assets/css/style.css">
-	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-md-12 col-md-offset-0">
-				<h1>D3Times</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12  col-md-9 col-md-offset-0">
-				<div class="iframeContainer">
-					<!-- Students: Add a responsive iframe here that includes the d3.html file -->
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12  col-md-9 col-md-offset-0">
-				<div class="article">
-					<!-- Students: Replace with your analysis of the data -->
-				</div>
-			</div>
-		</div>
-	</div>
 
-		<!-- Footer-->
-	<div id="footer">
-		<p><!-- Insert your Copyright Info here --></p>
+<head>
+	<meta charset="utf-8">
+	<title>Data Journalism using D3</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+</head>
+
+<body>
+	<h1 class="heading">Data Journalism: 2014 State Economic Factors</h1>
+	
+	<div>
+		<iframe src="d3.html" height="500" width="100%" frameborder="0" scrolling="no"></iframe>
 	</div>
+	
+	<h2 class="heading">Understanding multi-axis data fields</h2>
+	
+	<h4 class="heading"> X - Axis </h4>
+
+	<ul>
+		<li><i>Educaton < Highschool (%): </i>Default x-axis option. % of population with less than a high school education.</li>
+
+		<li><i>Education > Bachelors (%): </i>Second x-axis option. % of population with less than a Bachelors Degree.</li> 
+
+		<li><i>No Health Coverage (%): </i>Third x-axis option. % of population with no healthcare coverage.</li>
+	</ul>
+
+	<h4 class="heading">Y - Axis</h4>
+
+	<ul>
+		<li><i>Can't afford Healthcare (%): </i>Default y-axis option. % of population which cannot afford healthcare.</li>
+
+		<li><i>Unemployment (%): </i>Second y-axis option. % of population older than 16 and unemployed.</li>
+
+		<li><i>Depression(%): </i>Third y-axis option. % of population with known depression.</li>
+	</ul>
+
+	<h3 class="heading">Findings</h3>
+
+	<ul>
+		<li>
+			There appears to be a strong correlation within the population of persons with less than a high school education not being able to afford healthcare.
+		</li>
+
+		<li>
+			There appears to be minimal correlation between a lower state unemployment level and percent of population with at least a graduate degree.
+		</li>
+
+		<li>
+			Further study would be required but there appears to be a small correlation between persons with no healthcare coverage and depression levels.
+		</li>
+	</ul>
 
 </body>
 </html>
