@@ -20,9 +20,9 @@ d3.select(".chart")
 	.attr("class", "tooltip")
 	.style("opacity", 0);
 
-d3.csv("corr_data.csv", function(err, corr_data) {
+d3.csv("corrData.csv", function(err, corrData) {
 	if (err) throw err;
-			corr_data.forEach(function(data) {
+			corrData.forEach(function(data) {
 				data.LessThanHighscool = +data.LessThanHighscool;
 				data.NotAffordHealthcare = +data.NotAffordHealthcare;
 				//2nd chart
@@ -32,7 +32,7 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 				data.NoHealthcoverage = +data.NoHealthcoverage
 				data.depression_datavalue = +data.depression_datavalue
 			});
-			console.log(corr_data)
+			console.log(corrData)
 
 			// Create scale functions
 			var yLinearScale = d3.scaleLinear().range([height, 0]);
@@ -49,20 +49,20 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 			var yMin;
 
 			function findMinAndMax(dataColumnX) {
-				xMin = d3.min(corr_data, function(data) {
+				xMin = d3.min(corrData, function(data) {
 					return +data[dataColumnX] * 0.75;
 				});
 
-				xMax = d3.max(corr_data, function(data) {
+				xMax = d3.max(corrData, function(data) {
 					return +data[dataColumnX] * 1.1;
 				});
 
-				yMax = d3.max(corr_data, function(data) {
+				yMax = d3.max(corrData, function(data) {
 
 					return +data.NotAffordHealthcare * 1.5;
 				});
 
-				yMin = d3.min(corr_data, function(data){
+				yMin = d3.min(corrData, function(data){
 					return +data.NotAffordHealthcare * 0.3;
 				});
 			}
@@ -78,11 +78,9 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 			xLinearScale.domain([xMin,xMax]);
 			yLinearScale.domain([yMin,yMax]);
 
-
-
-		// defining tooltip 
-		//2nd chart - BachelorsOrMore & UnemployedPop
-		//3rd chart - NoHealthcoverage & depression_datavalue
+			// defining tooltip 
+			//2nd chart - BachelorsOrMore & UnemployedPop
+			//3rd chart - NoHealthcoverage & depression_datavalue
 
 			var toolTip = d3.tip()
 					.attr("class", "tooltip")
@@ -123,7 +121,7 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 						// return (state + xinfo + xdata). tool tip based on which Y-AXIS is active
 
 						if (currentAxisLabelY === 'NotAffordHealthcare') {
-							yinfo = "Can't afford Healthcare (%): " + NotAffordHealthcare
+							yinfo = "Cannot afford Healthcare (%): " + NotAffordHealthcare
 						}
 						else if(currentAxisLabelY === 'UnemployedPop'){
 							yinfo = "Unemployment (%):" + UnemployedPop
@@ -136,7 +134,7 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 					});
 			chart.call(toolTip);
 			chart.selectAll("circle")
-						.data(corr_data)
+						.data(corrData)
 						.enter().append("circle")
 						.attr("cx", function(data, index) {
 							return xLinearScale(+data[currentAxisLabelX]);
@@ -159,19 +157,19 @@ d3.csv("corr_data.csv", function(err, corr_data) {
 							});
 
 			var text = chart.selectAll("text")
-								.data(corr_data)
-								.enter()
-								.append("text")
-								.attr("class", "labels")
-								.attr("x", function(data, index) {
-									return xLinearScale(+data[currentAxisLabelX]-0.01);
-									})
-								.attr("y", function(data, index) {
-									return yLinearScale(+data[currentAxisLabelY]-0.3);
-									})
-								.text(function(data){
-									return data.abbr;
-										})
+						.data(corrData)
+						.enter()
+						.append("text")
+						.attr("class", "labels")
+						.attr("x", function(data, index) {
+							return xLinearScale(+data[currentAxisLabelX]-0.01);
+							})
+						.attr("y", function(data, index) {
+							return yLinearScale(+data[currentAxisLabelY]-0.3);
+							})
+						.text(function(data){
+							return data.abbr;
+							})
 
 		// append an SVG group for x-axis and display x-axis
 			chart.append("g")
